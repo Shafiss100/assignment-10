@@ -1,19 +1,79 @@
-import React from 'react';
+import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/auth';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import auth from '../../Firebase/firebase.init';
 import './Signup.css';
 
 const Signup = () => {
+    const [error, setError] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const provider = new GoogleAuthProvider();
+  const navigate = useNavigate();
+
+   
+  
+  
+  
+    const createEmail = (event) => {
+        event.preventDefault();
+        createUserWithEmailAndPassword(auth, email, password)
+          .then((userCredential) => {
+            const user = userCredential.user;
+            console.log(user);
+             navigate("/");
+          })
+          .catch((error) => {
+            const errorMessage = error.message;
+            setError(errorMessage);
+          });
+    };
+    const emailset = (event) => {
+        setEmail(event.target.value)
+        console.log(event);
+    }
+    const passwordset = (event) => {
+        setPassword(event.target.value)
+        console.log(event);
+    }
+
+  
+  
+
+    const googlesignin = () => {
+      signInWithPopup(auth, provider)
+        .then((result) => {
+          const user = result.user;
+          console.log(user.email);
+           navigate("/");
+        })
+        .catch((error) => {
+          setError(error);
+        });
+    };
+
+
+
     return (
       <div>
         <div className="form-container">
+          <h1>Plese signup</h1>
           <div className="form">
-            <form className="" action="">
+            <form className="" onSubmit={createEmail}>
               <label htmlFor="name">User name</label>
               <br />
               <input type="text" placeholder="User name" />
               <br />
               <label htmlFor="name">Email</label>
               <br />
-              <input type="email" name="email" id="" placeholder="email" />
+              <input
+                onBlur={emailset}
+                type="email"
+                name="email"
+                id=""
+                placeholder="email"
+                required
+              />
               <br />
               <label htmlFor="name">Password</label>
               <br />
@@ -22,10 +82,13 @@ const Signup = () => {
                 name="password"
                 id=""
                 placeholder="Password"
+                required
+                onBlur={passwordset}
               />
               <br />
 
               <input className="submit" type="submit" value="submit" />
+              <p className="errorMessage">{error}</p>
             </form>
           </div>
           <div className="or">
@@ -34,7 +97,7 @@ const Signup = () => {
             <div className="line2"></div>
           </div>
           <div className="btn">
-            <button>log in with google</button>
+            <button onClick={googlesignin}>Sign up with google</button>
           </div>
         </div>
       </div>

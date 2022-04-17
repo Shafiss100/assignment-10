@@ -1,13 +1,23 @@
+import { signOut } from 'firebase/auth';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import auth from '../../Firebase/firebase.init';
 import './Navbar.css';
 
 const Navbar = () => {
+  const navigate = useNavigate();
+  const signout = () => {
+    signOut(auth)
+      .then( ()=> {
+         navigate("/login");
+      })
+      .catch((error) => {});
+  }; 
     return (
-        <div className='nav-container'>
-            <div>
-                <h1>Photo World</h1>
-            </div>
+      <div className="nav-container">
+        <div>
+          <h1>Photo World</h1>
+        </div>
         <div>
           <Link className="nav-link" to={"/"}>
             Home
@@ -21,9 +31,16 @@ const Navbar = () => {
           <Link className="nav-link" to={"/blog"}>
             Blog
           </Link>
-          <Link className="nav-link" to={"login"}>
-            Login
-          </Link>
+          
+           <Link className="nav-link" to={"login"}>
+              Log in
+            </Link>
+          <Link className="nav-link" to={"signup"}>
+            Sign up
+        </Link>
+        <button className="nav-link" onClick={signout}>
+              Sign out
+            </button>
         </div>
       </div>
     );

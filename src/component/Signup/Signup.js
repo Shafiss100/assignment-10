@@ -1,7 +1,7 @@
 import React from 'react';
-import './Login.css';
+import './Signup.css';
 
-const Login = () => {
+const Signup = () => {
     return (
       <div>
         <div className="form-container">
@@ -32,11 +32,13 @@ const Login = () => {
             <div className="line1"></div>
             <div>or</div>
             <div className="line2"></div>
-                </div>
-                <div className='btn'><button>log in with google</button></div>
+          </div>
+          <div className="btn">
+            <button>log in with google</button>
+          </div>
         </div>
       </div>
     );
 };
 
-export default Login;
+export default Signup;

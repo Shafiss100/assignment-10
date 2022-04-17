@@ -1,0 +1,18 @@
+.nav-container{
+    display: flex;
+    align-items: center;
+    justify-content:space-evenly;
+}
+.nav-link{
+    text-decoration: none;
+    margin-right: 20px;
+    padding: 0px 10px;
+    font-weight: 600;
+    color: rgb(77, 77, 224);
+    border: 2px solid rgb(166, 166, 246);
+    border-radius: 40px;
+}
+.nav-link:hover{
+    color: rgb(4, 4, 104);
+    border: 2px solid rgb(3, 3, 146);
+}

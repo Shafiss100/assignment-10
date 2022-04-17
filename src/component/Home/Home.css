@@ -1,0 +1,23 @@
+.service-container{
+    margin-left: 10%;
+    margin-right: 10%;
+    display: grid;
+    grid-gap: 50px;
+    grid-template-columns: 1fr 1fr 1fr;
+    
+}
+.service{
+    color: aliceblue;
+    padding: 20px;
+    background-color: rgb(41, 108, 223);
+    border: 2px solid rgb(5, 5, 99);
+    border-radius: 20px;
+}
+.service button{
+    margin-top: 10px;
+    color: rgb(0, 11, 20);
+    padding: 5px;
+    background-color: rgb(255, 255, 255);
+    border: 2px solid rgb(134, 134, 147);
+    border-radius: 10px;
+}

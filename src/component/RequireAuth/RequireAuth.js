@@ -10,6 +10,7 @@ const RequireAuth = ({ children }) => {
         return <p className='loading'>wait a second</p>
     }
     if (!user) {
+        
         return <Navigate to="/login" state={{ from: location }} replace />;
     }
     return children;

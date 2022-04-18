@@ -3,6 +3,7 @@ import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../Firebase/firebase.init';
+import CustomLink from '../CustomLink/CustomLink';
 import './Navbar.css';
 
 const Navbar = () => {
@@ -20,40 +21,30 @@ const Navbar = () => {
         <div>
           <h1>Photo World</h1>
         </div>
-        <div>
-          <Link className="nav-link" to={"/"}>
+        <div className='links'>
+          <CustomLink className="nav-link" to={"/"}>
             Home
-          </Link>
-          <Link className="nav-link" to={"/checkout"}>
+          </CustomLink>
+          <CustomLink className="nav-link" to={"/checkout"}>
             Checkout
-          </Link>
-          <Link className="nav-link" to={"/about"}>
+          </CustomLink>
+          <CustomLink className="nav-link" to={"/about"}>
             About
-          </Link>
-          <Link className="nav-link" to={"/blog"}>
+          </CustomLink>
+          <CustomLink className="nav-link" to={"/blog"}>
             Blog
-          </Link>
-          {!user? (
-            <Link className="nav-link" to={"login"}>
+          </CustomLink>
+          {!user ? (
+            <CustomLink className="nav-link" to={"/login"}>
               Log in
-            </Link>
+            </CustomLink>
           ) : (
-            <button className="nav-link" onClick={signout}>
-               Sign out 
-            </button>
+            <CustomLink onClick={signout} className="nav-link" to={"/login"}>
+              Sign out
+            </CustomLink>
           )}
 
-
-
-          {/* <Link className="nav-link" to={"login"}>
-
-          </Link>
-          <Link className="nav-link" to={"signup"}>
-          </Link>
-          <button className="nav-link" onClick={signout}>Sign out
-          </button> */}
-
-
+          
         </div>
       </div>
     );

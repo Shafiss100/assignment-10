@@ -3,13 +3,16 @@
     align-items: center;
     justify-content:space-evenly;
 }
+.links{
+    display: flex;
+}
 .nav-link{
     text-decoration: none;
     margin-right: 20px;
     padding: 0px 10px;
     font-weight: 600;
-    color: rgb(77, 77, 224);
-    border: 2px solid rgb(166, 166, 246);
+    color: rgb(132, 132, 229);
+    border: 2px solid rgb(9, 9, 251);
     border-radius: 40px;
 }
 .nav-link:hover{

@@ -53,3 +53,17 @@
     border: 2px solid blue;
     margin: 0px 10px;
 }
+
+.width{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    
+}
+
+.center{
+color: rgb(21, 98, 200);
+
+}

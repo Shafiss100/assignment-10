@@ -77,7 +77,9 @@ const Login = () => {
 
   return (
     <div>
-      <h1>please Login</h1>
+      <div className="width">
+        <h1 className="center">please Login</h1>
+      </div>
       <div className="form-container">
         <div className="form">
           <form className="" onSubmit={signinEmail}>
@@ -117,9 +119,11 @@ const Login = () => {
         <div className="btn">
           <button onClick={googlesignin}>log in with google</button>
         </div>
-        <Link className="" to={"/signup"}>
-          create new acount
-        </Link>
+        <div className="width">
+          <Link className="center" to={"/signup"}>
+            create new acount
+          </Link>
+        </div>
       </div>
     </div>
   );

@@ -67,7 +67,9 @@ const Signup = () => {
     return (
       <div>
         <div className="form-container">
-          <h1>Plese signup</h1>
+          <div className="width">
+            <h1 className="center">Plese signup</h1>
+          </div>
           <div className="form">
             <form className="" onSubmit={createEmail}>
               <label htmlFor="name">User name</label>
@@ -109,9 +111,11 @@ const Signup = () => {
           <div className="btn">
             <button onClick={googlesignin}>Sign up with google</button>
           </div>
-          <Link className="" to={"/login"}>
-            already have an acount (login)
-          </Link>
+          <div className="width">
+            <Link className="center" to={"/login"}>
+              already have an acount (login)
+            </Link>
+          </div>
         </div>
       </div>
     );

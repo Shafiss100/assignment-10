@@ -16,3 +16,12 @@
     color: rgb(4, 4, 104);
     border: 2px solid rgb(3, 3, 146);
 }
+
+@media screen and (max-width: 780px) {
+  .nav-container{
+      display: block;
+  }
+  .nav-link{
+      margin-right: 1px;
+  }
+}

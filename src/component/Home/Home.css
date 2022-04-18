@@ -6,8 +6,11 @@
     grid-template-columns: 1fr 1fr 1fr;
     
 }
+
+
 .service{
     color: aliceblue;
+    
     padding: 20px;
     background-color: rgb(41, 108, 223);
     border: 2px solid rgb(5, 5, 99);
@@ -20,4 +23,14 @@
     background-color: rgb(255, 255, 255);
     border: 2px solid rgb(134, 134, 147);
     border-radius: 10px;
+}
+
+
+@media screen and (max-width: 780px) {
+  .service-container{
+      display: block;
+  }
+  .service{
+      margin: 20px;
+  }
 }

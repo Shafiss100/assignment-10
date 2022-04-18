@@ -1,10 +1,13 @@
 import {
   GoogleAuthProvider,
+  onAuthStateChanged,
+  sendPasswordResetEmail,
+  sendSignInLinkToEmail,
   signInWithEmailAndPassword,
   signInWithPopup,
 } from "firebase/auth";
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import auth from "../../Firebase/firebase.init";
 import "./Login.css";
 
@@ -15,6 +18,11 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const provider = new GoogleAuthProvider();
   const navigate = useNavigate();
+  useEffect(() => {
+    onAuthStateChanged(auth, user => {
+      setUser(user);
+    })
+  })
   const signinEmail = (event) => {
     
     event.preventDefault();
@@ -22,6 +30,8 @@ const Login = () => {
       .then((userCredential) => {
           const user = userCredential.user;
         setUser(user);
+        setEmail("");
+        setPassword("");
         navigate('/');
 
       })
@@ -40,7 +50,16 @@ const Login = () => {
       console.log(event);
     };
 
-
+  const changepassword = () => {
+      sendPasswordResetEmail(auth, email)
+        .then(() => {
+          setError(`email send to ${email}`);
+        })
+        .catch((error) => {;
+          const errorMessage = error.message;
+          setError(errorMessage);
+        });
+    }
 
 
 
@@ -84,6 +103,9 @@ const Login = () => {
             <br />
 
             <input className="submit" type="submit" value="submit" />
+            <button className="reset-btn" onClick={changepassword}>
+              reset password
+            </button>
             <p className="errorMessage">{error}</p>
           </form>
         </div>
@@ -95,8 +117,10 @@ const Login = () => {
         <div className="btn">
           <button onClick={googlesignin}>log in with google</button>
         </div>
+        <Link className="" to={"/signup"}>
+          create new acount
+        </Link>
       </div>
-      <p>email: {user.email}</p>
     </div>
   );
 };

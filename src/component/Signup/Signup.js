@@ -1,6 +1,6 @@
-import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/auth';
+import { createUserWithEmailAndPassword, GoogleAuthProvider, sendEmailVerification, signInWithPopup, signOut } from 'firebase/auth';
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../Firebase/firebase.init';
 import './Signup.css';
 
@@ -15,13 +15,16 @@ const Signup = () => {
   
   
   
-    const createEmail = (event) => {
+  const createEmail = (event) => {
+      
         event.preventDefault();
         createUserWithEmailAndPassword(auth, email, password)
           .then((userCredential) => {
             const user = userCredential.user;
             console.log(user);
-             navigate("/");
+            emailVerifide();
+            setError(`your varification link send to ${email}`)
+            
           })
           .catch((error) => {
             const errorMessage = error.message;
@@ -52,7 +55,14 @@ const Signup = () => {
         });
     };
 
-
+  const emailVerifide = () => {
+    sendEmailVerification(auth.currentUser).then(() => {
+      setEmail('');
+      setPassword('');
+      setError('')
+     navigate("/");
+  });
+}
 
     return (
       <div>
@@ -99,6 +109,9 @@ const Signup = () => {
           <div className="btn">
             <button onClick={googlesignin}>Sign up with google</button>
           </div>
+          <Link className="" to={"/login"}>
+            already have an acount (login)
+          </Link>
         </div>
       </div>
     );

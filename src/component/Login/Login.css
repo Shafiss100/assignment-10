@@ -48,3 +48,8 @@
 .errorMessage{
     color: brown;
 }
+.reset-btn{
+    padding: 5px;
+    border: 2px solid blue;
+    margin: 0px 10px;
+}

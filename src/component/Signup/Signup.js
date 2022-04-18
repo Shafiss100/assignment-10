@@ -21,7 +21,6 @@ const Signup = () => {
         createUserWithEmailAndPassword(auth, email, password)
           .then((userCredential) => {
             const user = userCredential.user;
-            console.log(user);
             emailVerifide();
             setError(`your varification link send to ${email}`)
             
@@ -33,11 +32,9 @@ const Signup = () => {
     };
     const emailset = (event) => {
         setEmail(event.target.value)
-        console.log(event);
     }
     const passwordset = (event) => {
         setPassword(event.target.value)
-        console.log(event);
     }
 
   
@@ -47,7 +44,6 @@ const Signup = () => {
       signInWithPopup(auth, provider)
         .then((result) => {
           const user = result.user;
-          console.log(user.email);
            navigate("/");
         })
         .catch((error) => {
@@ -65,7 +61,7 @@ const Signup = () => {
 }
 
     return (
-      <div>
+      <div className="margin">
         <div className="form-container">
           <div className="width">
             <h1 className="center">Plese signup</h1>

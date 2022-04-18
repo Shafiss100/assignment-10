@@ -19,7 +19,7 @@ const Navbar = () => {
     return (
       <div className="nav-container">
         <div>
-          <h1>Photo World</h1>
+          <h1 className='center'>Photo World</h1>
         </div>
         <div className='links'>
           <CustomLink className="nav-link" to={"/"}>
@@ -39,9 +39,7 @@ const Navbar = () => {
               Log in
             </CustomLink>
           ) : (
-            <CustomLink onClick={signout} className="nav-link" to={"/login"}>
-              Sign out
-            </CustomLink>
+            <button onClick={signout} className='width'>signout</button>
           )}
 
           

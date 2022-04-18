@@ -43,11 +43,9 @@ const Login = () => {
     
     const emailset = (event) => {
       setEmail(event.target.value);
-      console.log(event);
     };
     const passwordset = (event) => {
       setPassword(event.target.value);
-      console.log(event);
     };
 
   const changepassword = () => {
@@ -76,8 +74,8 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <div className="width">
+    <div className="margin">
+      <div className="width ">
         <h1 className="center">please Login</h1>
       </div>
       <div className="form-container">

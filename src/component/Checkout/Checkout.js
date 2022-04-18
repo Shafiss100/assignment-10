@@ -8,6 +8,7 @@ const Checkout = () => {
       <div className="margin ">
         <h2>email : {user?.email}</h2>
         <h2>name : {user?.displayName}</h2>
+        
         <div className="width">
           <img className="center" src={user?.photoURL} alt="" />
         </div>
